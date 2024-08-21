@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.base import TemplateView
 from .models import Landingpage
 
 
@@ -26,3 +27,18 @@ def home(request):
     context = { "landingpage" : landingpageList[1] }
 
     return render(request, 'landingpage/home.html', context)
+
+
+def test(request):
+    return HttpResponse("Hello from HttpResponse!")
+
+
+# Come usare le view con le classi
+class LandingpageView(TemplateView):
+    # questa è una property di TemplateView e va passato il nome del template html che si vuole usare
+    template_name = 'landingpage/home.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["landingpage"] = Landingpage.objects.all()[0]
+        return context
