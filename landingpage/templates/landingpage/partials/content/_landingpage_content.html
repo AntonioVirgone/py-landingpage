@@ -1,0 +1,23 @@
+<div class="container">
+  {% block banner_big %}
+    {% include "landingpage/partials/content/_banner_big.html" %}
+  {% endblock %}
+
+  {% block highlights %}
+    {% include "landingpage/partials/content/highlights/_section_highlights.html" %}
+  {% endblock %}
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+    {% block section %}
+      {% include "landingpage/partials/content/_section_articles.html" %}
+    {% endblock %}
+
+    {% block sidebar %}
+      {% include "landingpage/partials/content/sidebar/_sidebar.html" %}
+    {% endblock %}
+  </div>
+  <!-- /.row -->
+</main>
+<!-- /.container -->

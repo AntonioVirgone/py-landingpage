@@ -4,6 +4,7 @@ from django.db import models
 class Landingpage(models.Model):
     title = models.CharField(max_length=255)
     message = models.TextField()
+    cards = [0,1]
     created_at = models.DateField(auto_now_add=True)
 
     
