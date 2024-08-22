@@ -36,7 +36,7 @@ def test(request):
 # Come usare le view con le classi
 class LandingpageView(TemplateView):
     # questa è una property di TemplateView e va passato il nome del template html che si vuole usare
-    template_name = 'landingpage/home.html'
+    template_name = 'landingpage/blog.html'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

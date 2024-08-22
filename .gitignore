@@ -1,0 +1,17 @@
+# Byte-compiled
+*.pyc
+
+# Escludo la cartella pycache
+__pycache__/
+
+# Escludo il virtual enviroment
+.env
+.venv
+env/
+venv/
+
+# Django stuff
+*.log
+local_setting.py
+db.sqlite3
+db.sqlite3-journal
