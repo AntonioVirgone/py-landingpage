@@ -16,8 +16,11 @@ Including another URLconf
 """
 from . import views
 from django.urls import path
+from .views import LandingpageView
 
 urlpatterns = [
     path('', views.index, name='landingpage'),
-    path('home', views.home, name='landingpage'),
+    path('test/', views.test, name='test'),
+    path('fbs/', views.home, name='fbs_home'),
+    path('cbs/', LandingpageView.as_view(), name="cbs_home")
 ]
