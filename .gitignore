@@ -13,5 +13,5 @@ venv/
 # Django stuff
 *.log
 local_setting.py
-dq.sqlite3
-dq.sqlite3-journal
+db.sqlite3
+db.sqlite3-journal
