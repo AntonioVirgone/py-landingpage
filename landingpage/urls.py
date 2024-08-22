@@ -20,7 +20,7 @@ from .views import LandingpageView
 
 urlpatterns = [
     path('', views.index, name='landingpage'),
-    path('home', views.home, name='home'),
-    path('test', views.test, name='test'),
-    path('mine/', LandingpageView.as_view(), name="my-view")
+    path('test/', views.test, name='test'),
+    path('fbs/', views.home, name='fbs_home'),
+    path('cbs/', LandingpageView.as_view(), name="cbs_home")
 ]
