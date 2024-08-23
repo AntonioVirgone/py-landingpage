@@ -1,7 +1,7 @@
 <div class="row mb-2">
-  {% for card in landingpage.cards %}
+  {% for highlight in highlights %}
     {% block highlights_card %}
-      {% include "landingpage/partials/content/highlights/_highlights_card.html" %}
+      {% include "landingpage/partials/content/highlights/_highlights_card.html" with highlight_detail=highlight %}
     {% endblock %}
   {% endfor %}
 </div>

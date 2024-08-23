@@ -25,3 +25,7 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse("articles:article-detail", args=[self.slug])
     
+    
+    def isLBigArticle(self):
+        return len(self.content) > 280
+    
