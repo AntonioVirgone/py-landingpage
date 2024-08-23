@@ -1,0 +1,11 @@
+<h1>Articles</h1>
+<ul>
+    {% for article in object_list %}
+        <li><a href="http://localhost:8000/articles/{{ article.slug }}" style="
+            color: black;
+            text-decoration: none;
+        "> {{ article.published| date }} - {{ article.title }}</a></li>
+        {% empty %}
+        <li>No articles yet.</li>
+    {% endfor %}
+</ul>
