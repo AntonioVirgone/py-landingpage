@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-
+from django.urls import reverse
 
 # Create your models here.
 class Article(models.Model):
@@ -17,5 +17,11 @@ class Article(models.Model):
     class Meta:
         ordering = ("-updated", "-published")
 
+    
     def __str__(self):
         return self.title
+    
+    
+    def get_absolute_url(self):
+        return reverse("articles:article-detail", args=[self.slug])
+    
