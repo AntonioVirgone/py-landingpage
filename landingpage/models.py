@@ -7,4 +7,6 @@ class Landingpage(models.Model):
     cards = [0,1]
     created_at = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
     

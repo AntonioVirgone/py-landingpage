@@ -4,10 +4,10 @@ from django.utils import timezone
 
 
 # Create your models here.
-class Articles(models.Model):
+class Article(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
-    image = models.ImageField(upload_to="uploads")
+    image = models.ImageField(upload_to="uploads", blank=True)
     content = models.TextField(max_length=5000)
     author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
@@ -15,7 +15,7 @@ class Articles(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ("updated", "published")
+        ordering = ("-updated", "-published")
 
     def __str__(self):
         return self.title
