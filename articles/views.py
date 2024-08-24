@@ -15,7 +15,7 @@ class ArticleDetailView(DetailView):
 class ArticleListView(ListView):
     model = Article
     # questa property consente di fare la paginazione nella view in modo automatico
-    paginate_by = 5
+    paginate_by = 3
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.core.paginator import Paginator
 
 from articles.models import Article 
 
@@ -46,9 +47,16 @@ class LandingpageView(TemplateView):
         context["landingpage"] = Landingpage.objects.all()[1]
         
         articles = Article.objects.all()
+        article_list = articles[3:]
         
         context['banner'] = articles[0]
         context['highlights'] = articles[1:3]
-        context['article_list'] = articles[3:]
+        #context['article_list'] = article_list
         
+        paginator = Paginator(article_list, 3)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        
+        context['page_obj'] = page_obj
+
         return context
