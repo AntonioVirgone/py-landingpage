@@ -1,0 +1,45 @@
+<nav class="blog-pagination">
+    {% if page.has_previous %}
+    <a class="btn btn-outline-primary" href="?page=1">&laquo; first</a>
+    <a class="btn btn-outline-primary" href="?page={{ page.previous_page_number }}">previous</a>
+    {% else %}
+    <a
+      class="btn btn-outline-secondary disabled"
+      href="#"
+      tabindex="-1"
+      aria-disabled="true"
+      >first</a
+    >
+    <a
+      class="btn btn-outline-secondary disabled"
+      href="#"
+      tabindex="-1"
+      aria-disabled="true"
+      >previous</a
+    >
+    {% endif %}
+
+    <span class="current">
+      Page {{ page.number }} of {{ page.paginator.num_pages }}
+    </span>
+
+    {% if page.has_next %}
+    <a class="btn btn-outline-primary" href="?page={{ page.next_page_number }}">next</a>
+    <a class="btn btn-outline-primary" href="?page={{ page.paginator.num_pages }}">last &raquo;</a>
+    {% else %}
+    <a
+      class="btn btn-outline-secondary disabled"
+      href="#"
+      tabindex="-1"
+      aria-disabled="true"
+      >next</a
+    >
+    <a
+      class="btn btn-outline-secondary disabled"
+      href="#"
+      tabindex="-1"
+      aria-disabled="true"
+      >last &raquo;</a
+    >
+    {% endif %}
+</nav>
