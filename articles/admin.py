@@ -13,7 +13,7 @@ class ArticleAdmin(admin.ModelAdmin):
     
     # lista di attributi che vogliamo siano visibili nella sezione Articles della pagina admin.
     # i valori che passiamo nella lista sono i campi che verranno mostrati nella tabella degli articoli nella pagina admin
-    list_display = ('title', 'author', 'created', 'updated')
+    list_display = ('title', 'author', 'published', 'created', 'updated')
     
     # lista di attributi per creare dei filtri nella pagina di admin
     list_filter = ('created', 'title')

@@ -3,7 +3,9 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.core.paginator import Paginator
 
-from articles.models import Article 
+from datetime import datetime
+
+from articles.models import Article
 
 from .models import Landingpage
 
@@ -45,18 +47,40 @@ class LandingpageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["landingpage"] = Landingpage.objects.all()[1]
-        
-        articles = Article.objects.all()
+
+        articles = Article.objects.filter(status="PUBLISHED").order_by("-published")
+        # Si ottiene lo stesso risultato di sopra
+        # articles = Article.objects.exclude(status='DRAFT').order_by('-published')
         article_list = articles[3:]
+
+        context["banner"] = articles[0]
+        context["highlights"] = articles[1:3]
+        # context['article_list'] = articles
+
+        context["archives"] = self.get_previous_month()
         
-        context['banner'] = articles[0]
-        context['highlights'] = articles[1:3]
-        #context['article_list'] = article_list
-        
+        context["categories"] = Article.CATEGORIES
+
         paginator = Paginator(article_list, 3)
-        page_number = self.request.GET.get('page')
+        page_number = self.request.GET.get("page")
         page_obj = paginator.get_page(page_number)
-        
-        context['page_obj'] = page_obj
+
+        context["page_obj"] = page_obj
 
         return context
+
+    def get_previous_month(self):
+        previous_months = []
+
+        for i in range(12):
+            month = datetime.now().month - i
+            year = datetime.now().year
+
+            if month <= 0:
+                month += 12
+                year -= 1
+            previous_months.append(
+                {"month": month, "year": year, "date": datetime(year, month, 1)}
+            )
+
+        return previous_months
