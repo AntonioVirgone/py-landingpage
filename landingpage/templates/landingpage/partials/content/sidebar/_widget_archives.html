@@ -1,8 +1,8 @@
 <div class="p-4">
   <h4 class="font-italic">Archives</h4>
   <ol class="list-unstyled mb-0">
-    {% for month in archives %}
-      <li><a href="#">{{ month.printable | date:"M Y" }}</a></li>
+    {% for archive in archives %}
+      <li><a href="{% url 'articles:article-archive' archive.year archive.month %}">{{ archive.date | date:"M Y" }}</a></li>
     {% endfor %}
   </ol>
 </div>

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.core.paginator import Paginator
 
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from articles.models import Article
 
@@ -58,6 +58,8 @@ class LandingpageView(TemplateView):
         # context['article_list'] = articles
 
         context["archives"] = self.get_previous_month()
+        
+        context["categories"] = Article.CATEGORIES
 
         paginator = Paginator(article_list, 3)
         page_number = self.request.GET.get("page")
@@ -78,7 +80,7 @@ class LandingpageView(TemplateView):
                 month += 12
                 year -= 1
             previous_months.append(
-                {"month": month, "year": year, "printable": datetime(year, month, 1)}
+                {"month": month, "year": year, "date": datetime(year, month, 1)}
             )
 
         return previous_months
