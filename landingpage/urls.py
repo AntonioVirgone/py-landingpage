@@ -19,10 +19,12 @@ from . import views
 from django.urls import path
 from .views import LandingpageView
 
+app_name = 'landingpage'
+
 urlpatterns = [
     # path('', views.index, name='landingpage'),
     # path('test/', views.test, name='test'),
     # path('fbs/', views.home, name='fbs_home'),
     # path('cbs/', LandingpageView.as_view(), name="cbs_home"),
-    path("", LandingpageView.as_view(), name="cbs_home")
+    path("", LandingpageView.as_view(), name="landingpage")
 ]

@@ -3,11 +3,8 @@
     class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
   >
     <div class="col p-4 d-flex flex-column position-static">
-      {% if highlight_detail.isLBigArticle %}
-      <strong class="d-inline-block mb-2 text-success">Design</strong>
-      {% else %}
-      <strong class="d-inline-block mb-2 text-primary">World</strong>
-      {% endif %}
+      <strong class="d-inline-block mb-2 text-success">{{ highlight_detail.get_category_display }}</strong>
+      <!-- <strong class="d-inline-block mb-2 text-primary">World</strong> -->
       <h3 class="mb-0">{{ highlight_detail.title }}</h3>
       <div class="mb-1 text-muted">{{ highlight_detail.published | date:"M, d" }}</div>
       <p class="card-text mb-auto">
