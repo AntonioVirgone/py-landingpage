@@ -1,0 +1,12 @@
+{% extends 'landingpage/base.html' %}
+
+{% block page_content %}
+    <div class="container-fluid">
+        <h5>Info Profile:</h5>
+        <ul>
+            <li>Name: {{ user.username }}</li>
+            <li>Email: {{ user.email }}</li>
+            <li>Birthdate: {{ user.profile.birthdate }}</li>
+        </ul>
+    </div>
+{% endblock %}
