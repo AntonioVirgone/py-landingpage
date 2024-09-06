@@ -8,5 +8,8 @@
             <li>Email: {{ user.email }}</li>
             <li>Birthdate: {{ user.profile.birthdate }}</li>
         </ul>
+    <br>
+    <p>Change your profile <a href="#">here</a></p>
+    <p>Change your password <a href="{% url 'accounts:password_change' %}">here</a></p>
     </div>
 {% endblock %}
